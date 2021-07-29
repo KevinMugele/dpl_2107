@@ -27,6 +27,12 @@ RSpec.describe Library do
     expect(dpl.authors).to eq([])
   end
 
+  it "has checked out books " do
+    dpl = Library.new("Denver Public Library")
+
+    expect(dpl.checked_out_books).to eq([])
+  end
+
   it "has added authors" do
     dpl = Library.new("Denver Public Library")
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
@@ -70,7 +76,7 @@ RSpec.describe Library do
     expect(dpl.find_publication_year(harper_lee)).to eq(["1960"])
   end
 
-  it "has publication time frame" do
+  it "has publication time frame for (author)" do
     dpl = Library.new("Denver Public Library")
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     jane_eyre = charlotte_bronte.write("Jane Eyre", "October 16, 1847")
