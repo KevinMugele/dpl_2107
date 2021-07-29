@@ -1,5 +1,4 @@
 class Library
-
   attr_reader :name, :books, :authors, :checked_out_books
 
   def initialize(name)
@@ -53,7 +52,4 @@ class Library
     end
     popular
   end
-
-
-
 end
