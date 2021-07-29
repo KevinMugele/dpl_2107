@@ -37,6 +37,4 @@ RSpec.describe Author do
 
     expect(charlotte_bronte.books).to eq([jane_eyre, villette])
   end
-
-
 end

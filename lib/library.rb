@@ -1,11 +1,12 @@
 class Library
 
-  attr_reader :name, :books, :authors
+  attr_reader :name, :books, :authors, :checked_out_books
 
   def initialize(name)
     @name = name
     @books = []
     @authors = []
+    @checked_out_books = []
   end
 
   def add_author(author)
@@ -30,7 +31,28 @@ class Library
     publication_time_frame
   end
 
+  def checkout(book)
+    if @books.include?(book) == true && book.checked_out? == false
+      @checked_out_books << book
+      book.add_to_counter
+      book.checked_out = true
+      true
+    else
+      false
+    end
+  end
 
+  def return(book)
+    book.checked_out = false
+    @checked_out_books.delete(book)
+  end
+
+  def most_popular_book
+    popular = @books.max_by do |book|
+      book.checkout_counter
+    end
+    popular
+  end
 
 
 
