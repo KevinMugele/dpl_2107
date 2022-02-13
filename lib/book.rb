@@ -1,6 +1,8 @@
-class Book
+# frozen_string_literal: true
 
-  attr_reader :author_last_name, :author_first_name, :title, :publication_date, :author, :publication_year, :checkout_counter
+class Book
+  attr_reader :author_last_name, :author_first_name, :title, :publication_date, :author, :publication_year,
+              :checkout_counter
   attr_writer :checked_out
 
   def initialize(param)
@@ -9,7 +11,7 @@ class Book
     @title = param[:title]
     @publication_date = param[:publication_date]
     @author = "#{@author_first_name} #{@author_last_name}"
-    @publication_year = @publication_date[-4..-1]
+    @publication_year = @publication_date[-4..]
     @checked_out = false
     @checkout_counter = 0
   end
@@ -20,5 +22,5 @@ class Book
 
   def add_to_counter
     @checkout_counter += 1
-  end 
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Library
   attr_reader :name, :books, :authors, :checked_out_books
 
@@ -25,8 +27,8 @@ class Library
 
   def publication_time_frame_for(author)
     publication_time_frame = {}
-    publication_time_frame[:start] = find_publication_year(author).sort[0]
-    publication_time_frame[:end] = find_publication_year(author).sort[-1]
+    publication_time_frame[:start] = find_publication_year(author).min
+    publication_time_frame[:end] = find_publication_year(author).max
     publication_time_frame
   end
 
@@ -47,9 +49,6 @@ class Library
   end
 
   def most_popular_book
-    popular = @books.max_by do |book|
-      book.checkout_counter
-    end
-    popular
+    @books.max_by(&:checkout_counter)
   end
 end
